@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ContosoUniversity.Models;
 
-namespace WebApplication2
+namespace ContosoUniversity
 {
     public class Startup
     {
