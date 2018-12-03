@@ -113,7 +113,7 @@ namespace ContosoUniversity.Data
 
             foreach (Course c in courses)
             {
-                context.Courses.Add(c);
+                context.Course.Add(c);
             }
             context.SaveChanges();
 
