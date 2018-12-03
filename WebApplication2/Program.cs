@@ -1,10 +1,10 @@
-﻿using ContosoUniversity.Models;                   // SchoolContext
+﻿using ContosoUniversity.Data;
+using ContosoUniversity.Models;                   // SchoolContext
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;   // CreateScope
 using Microsoft.Extensions.Logging;
 using System;
-using WebApplication2;
 
 namespace ContosoUniversity
 {
