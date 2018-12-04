@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ContosoUniversity.Models.SchoolViewModels;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -17,12 +18,25 @@ namespace ContosoUniversity.Pages.Instructors
         {
             _context = context;
         }
+        public InstructorIndexData Instructor { get; set; }
+        public int InstructorID { get; set; }
 
-        public IList<Instructor> Instructor { get;set; }
-
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(int? id)
         {
-            Instructor = await _context.Instructors.ToListAsync();
+            Instructor = new InstructorIndexData();
+            Instructor.Instructors = await _context.Instructors
+                  .Include(i => i.OfficeAssignment)
+                  .Include(i => i.CourseAssignments)
+                    .ThenInclude(i => i.Course)
+                  .AsNoTracking()
+                  .OrderBy(i => i.LastName)
+                  .ToListAsync();
+
+            if (id != null)
+            {
+                InstructorID = id.Value;
+            }
         }
     }
 }
+
