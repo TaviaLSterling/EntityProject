@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ContosoUniversity.Models;
 
-namespace ContosoUniversity.Pages.Courses
+namespace ContosoUniversity.Pages.Instructors
 {
     public class IndexModel : PageModel
     {
@@ -18,14 +18,11 @@ namespace ContosoUniversity.Pages.Courses
             _context = context;
         }
 
-        public IList<Course> Course { get;set; }
+        public IList<Instructor> Instructor { get;set; }
 
         public async Task OnGetAsync()
         {
-            Course = await _context.Course
-                .Include(c => c.Department)
-                .AsNoTracking()
-                .ToListAsync();
+            Instructor = await _context.Instructors.ToListAsync();
         }
     }
 }
