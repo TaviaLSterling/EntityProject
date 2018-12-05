@@ -30,6 +30,10 @@ namespace ContosoUniversity.Pages.Instructors
                   .Include(i => i.CourseAssignments)
                     .ThenInclude(i => i.Course)
                        .ThenInclude(i => i.Department)
+                         .Include(i => i.CourseAssignments)
+            .ThenInclude(i => i.Course)
+                .ThenInclude(i => i.Enrollments)
+                    .ThenInclude(i => i.Student)
                   .AsNoTracking()
                   .OrderBy(i => i.LastName)
                   .ToListAsync();
